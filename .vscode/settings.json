@@ -17,6 +17,7 @@
     "call.h": "c",
     "mov.h": "c",
     "sub.h": "c",
-    "neg.h": "c"
+    "neg.h": "c",
+    "instructions.h": "c"
   }
 }
