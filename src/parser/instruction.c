@@ -1,11 +1,17 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <parser/instruction.h>
+#include <utils.h>
+#include <ctype.h>
+#include <string.h>
 
-Instruction *CreateInstruction(char *instr_name, char *values) {
-  Instruction *instr = malloc(sizeof(Instruction));
-  instr->instr_name = instr_name;
-  instr->values = values;
+char *InstructionToBin(char *str) {
+  for (int i = 0; str[i]; i++) {
+    str[i] = toupper(str[i]);
+  }
 
-  return instr;
+  if(strcmp(str, INSTR_MOV))
+  if(strcmp(str, INSTR_RET))
+
+  Error("%s is not instruction name", str);
 }

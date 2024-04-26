@@ -4,7 +4,10 @@
 #include <parser/node.h>
 #include <tokenizer/token.h>
 
-Node *Instr();
+extern char *bin_code;
+
+Node *Label(Node *cur);
+Node *Instr(Node *cur);
 Node *Parse(Token *token);
 
 #endif

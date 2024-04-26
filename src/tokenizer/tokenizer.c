@@ -1,25 +1,40 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <utils.h>
 #include <tokenizer/tokenizer.h>
+#include <errno.h>
 
 Token *Tokenize(char *p) {
   Token token;
   token.next = 0;
   Token *cur = &token;
   while (*p) {
+    switch (*p) {
+      case ',':
+      case ':':
+      case ';':
+      case '\n':
+        cur = CreateToken(cur, TK_RESERVED, *p);
+        p++;
+        continue;
+    }
+
     if (isspace(*p)) {
       p++;
       continue;
     }
 
-    switch (*p) {
-      case ',':
-      case ':':
-        cur = CreateToken(cur, TK_RESERVED, *p);
-        p++;
+    if (*p == '0' && *(p+1) == 'x') {
+      p+=2;
+
+      if(isxdigit(*p)) {
+        int num = strtol(p, &p, 16);
+        cur = CreateToken(cur, TK_NUM, num);
         continue;
+      }else {
+        Error("%c is not a hexadecimal number", *p);
+      }
     }
 
     if (isdigit(*p)) {
@@ -42,6 +57,8 @@ Token *Tokenize(char *p) {
       p+=len;
       continue;
     }
+
+    Error("%c", *p);
   }
 
   return token.next;

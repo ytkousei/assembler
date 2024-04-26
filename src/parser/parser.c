@@ -2,32 +2,48 @@
 #include <parser/parser.h>
 #include <utils.h>
 
+char *bin_code;
 Token *token;
 
-Node *label() {
+void Label() {
 }
 
-Node *Instr(Node *cur) {
-  Node *node = CreateNode(cur, NK_INSTR, token->str);
-  token = token->next;
-  return node;
+void Instr() {
+  InstructionToBin(token->str);
+
+  // Node *node = CreateNode(cur, NK_INSTR, token->str);
+  if (token->next) {
+    token = token->next;
+    // node->instr = CreateInstruction(IT_RET);
+    while(token->next) {
+      Token *next = token->next;
+      if (next->kind == TK_RESERVED && (next->val == '\n' || next->val == ';')) {
+        break;
+      }
+
+      if (next->kind == TK_NUM || next->kind == TK_IDENT) {
+      }
+
+      token = next;
+    }
+  } else {
+    // node->instr = CreateInstruction(IT_RET);
+    token = token->next;
+  }
+  // return node;
 }
 
-Node *Parse(Token *_token) {
+void Parse(Token *_token) {
   token = _token;
-
-  Node node;
-  node.next = 0;
-  Node *cur = &node;
 
   while (token) {
     switch (token->kind) {
       case TK_IDENT:
-        // Token *ntoken = _token->next;
-        // if (ntoken->kind == TK_RESERVED && ntoken->val == ':') {
-        //   label(token);
-        // }
-        Instr(cur);
+        Token *next = _token->next;
+        if (next->kind == TK_RESERVED && next->val == ':') {
+          Label();
+        }
+        Instr();
         continue;
     }
     Error("error");
