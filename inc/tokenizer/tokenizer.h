@@ -1,3 +1,3 @@
 #include <tokenizer/token.h>
 
-Token *tokenizer();
+Token *tokenizer(char *code);

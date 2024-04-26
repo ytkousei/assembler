@@ -5,6 +5,8 @@ set(
   SOURCES
   src/main.c
   src/elf_file.c
+  src/tokenizer/token.c
+  src/tokenizer/tokenizer.c
 )
 
 add_executable(mas ${SOURCES})

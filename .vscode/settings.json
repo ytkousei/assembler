@@ -1,6 +1,8 @@
 {
   "files.associations": {
     "elf.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "tokenizer.h": "c",
+    "ctype.h": "c"
   }
 }
