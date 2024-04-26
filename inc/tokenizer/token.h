@@ -1,3 +1,6 @@
+#ifndef _TOKEN_H
+#define _TOKEN_H
+
 typedef enum _TokenKind {
   TK_NUM,
   TK_IDENT,
@@ -14,3 +17,5 @@ struct _Token {
 };
 
 Token *CreateToken(Token *before_token, TokenKind kind, int val);
+
+#endif

@@ -2,9 +2,11 @@
 #include <elf.h>
 #include <elf_file.h>
 #include <tokenizer/tokenizer.h>
+#include <parser/parser.h>
 
 int main(int argc, char **argv) {
-  Token *token = tokenizer("main:\n\tadd rax,128\n\tret");
+  Token *token = Tokenize("main:\n\tadd rax,128\n\tret");
+  Node *node = Parse(token);
 
   // while (token)
   // {

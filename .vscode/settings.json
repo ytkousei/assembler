@@ -3,6 +3,9 @@
     "elf.h": "c",
     "stdio.h": "c",
     "tokenizer.h": "c",
-    "ctype.h": "c"
+    "ctype.h": "c",
+    "node.h": "c",
+    "parser.h": "c",
+    "token.h": "c"
   }
 }

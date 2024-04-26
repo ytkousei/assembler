@@ -4,7 +4,7 @@
 
 #include <tokenizer/tokenizer.h>
 
-Token *tokenizer(char *p) {
+Token *Tokenize(char *p) {
   Token token;
   token.next = 0;
   Token *cur = &token;
