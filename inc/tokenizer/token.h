@@ -5,6 +5,7 @@ typedef enum _TokenKind {
   TK_NUM,
   TK_IDENT,
   TK_RESERVED,
+  TK_EOF,
 } TokenKind;
 
 typedef struct _Token Token;

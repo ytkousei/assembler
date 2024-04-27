@@ -13,8 +13,8 @@ typedef struct _Node Node;
 struct _Node {
   NodeKind kind;
   Node *next;
-  Instruction *instr;
   char *str;
+  Param *param;
 };
 
 Node *CreateNode(Node *cur, NodeKind kind, char *str);

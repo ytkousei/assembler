@@ -1,19 +1,22 @@
 #include <stdio.h>
-#include <elf.h>
-#include <elf_file.h>
+// #include <elf.h>
+// #include <elf_file.h>
 #include <tokenizer/tokenizer.h>
 #include <parser/parser.h>
-#include <stdlib.h>
-#include <errno.h>
+#include <string.h>
+#include <utils/print.h>
+#include <utils/fs.h>
+#include <utils/args.h>
 
 int main(int argc, char **argv) {
-  Token *token = Tokenize("ret");
-  //main:\n\tadd rax,128\n\t
-  Node *node = Parse(token);
+  if (argc < 2) Error("Error: not enough arguments\n");
 
-  // while (token)
-  // {
-  //   printf("kind: %d, val: %d\n", token->kind, token->val),
-  //   token = token->next;
-  // }
+  Args *args = InitArgs(argc, argv);
+
+  ReadFile(args->input_path);
+  char code[BUF_SIZE + 1];
+  strcpy(code, file_content);
+
+  Token *token = Tokenize(code);
+  Node *Parse(token);
 }

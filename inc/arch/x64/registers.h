@@ -1,7 +1,7 @@
 #ifndef _REGISTERS_H
 #define _REGISTERS_H
 
-typedef enum _Registers64 {
+typedef enum _X64Registers64 {
   R64_RAX,
   R64_RCX,
   R64_RDX,
@@ -18,6 +18,6 @@ typedef enum _Registers64 {
   R64_R13,
   R64_R14,
   R64_R15,
-} Registers64;
+} X64Registers64;
 
 #endif

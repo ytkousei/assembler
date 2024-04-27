@@ -1,9 +1,10 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
-#include <utils.h>
+#include <utils/print.h>
 #include <tokenizer/tokenizer.h>
 #include <errno.h>
+#include <stdio.h>
 
 Token *Tokenize(char *p) {
   Token token;
@@ -33,7 +34,7 @@ Token *Tokenize(char *p) {
         cur = CreateToken(cur, TK_NUM, num);
         continue;
       }else {
-        Error("%c is not a hexadecimal number", *p);
+        Error("%c is not a hexadecimal number\n", *p);
       }
     }
 
@@ -48,8 +49,8 @@ Token *Tokenize(char *p) {
         len++;
       }
 
-      char *str = malloc(len + 1);
-
+      // char *str = malloc(sizeof(char) * (len + 1));
+      char *str = calloc(len + 1, sizeof(char));
       strncpy(str, p, len);
       cur = CreateToken(cur, TK_IDENT, len);
       cur->str = str;
@@ -58,8 +59,10 @@ Token *Tokenize(char *p) {
       continue;
     }
 
-    Error("%c", *p);
+    Error("%c\n", *p);
   }
+
+  cur = CreateToken(cur, TK_EOF, 0);
 
   return token.next;
 }
