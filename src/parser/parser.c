@@ -13,6 +13,7 @@ Node *Label(Node *cur, Token *next) {
   } else {
     Error("Error: expected a '\\n' or ';'\n");
   }
+  return 0;
 }
 
 Node *Instr(Node *cur) {
@@ -34,12 +35,16 @@ Node *Instr(Node *cur) {
     }
 
     if (next->kind == TK_NUM) {
+      if(!is_next) Error("Error: expected a ','\n");
+      is_next = 0;
       pcur = CreateParam(pcur, PK_NUM, next->val);
       token = next;
       continue;
     }
 
     if(next->kind == TK_IDENT) {
+      if(!is_next) Error("Error: expected a ','\n");
+      is_next = 0;
       pcur = CreateParam(pcur, PK_REG, 0);
       pcur->str = next->str;
       token = next;
@@ -56,13 +61,10 @@ Node *Instr(Node *cur) {
     if(next->kind == TK_RESERVED) {
       Error("Error: not expected a %c\n", next->val);
     }
+
     if(next->kind == TK_EOF) {
       Error("Error: expected declaration or statement at end of input\n");
     }
-  }
-
-  if(is_next) {
-    Error("test");
   }
 
   CreateParam(pcur, PK_EOF, 0);
@@ -80,6 +82,7 @@ Node *Parse(Token *_token) {
   while (token->next) {
     switch (token->kind) {
       case TK_IDENT:
+      {
         Token *next = token->next;
         if (next->kind == TK_RESERVED && next->val == ':') {
           cur = Label(cur, next);
@@ -87,6 +90,8 @@ Node *Parse(Token *_token) {
         }
         cur = Instr(cur);
         continue;
+      }
+      default: break;
     }
     Error("error: \n");
   }

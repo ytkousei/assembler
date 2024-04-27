@@ -1,12 +1,12 @@
 #include <stdio.h>
-// #include <elf.h>
-// #include <elf_file.h>
+#include <elf_file.h>
 #include <tokenizer/tokenizer.h>
 #include <parser/parser.h>
 #include <string.h>
 #include <utils/print.h>
 #include <utils/fs.h>
 #include <utils/args.h>
+#include <gen/gen.h>
 
 int main(int argc, char **argv) {
   if (argc < 2) Error("Error: not enough arguments\n");
@@ -18,5 +18,8 @@ int main(int argc, char **argv) {
   strcpy(code, file_content);
 
   Token *token = Tokenize(code);
-  Node *Parse(token);
+  Node *node = Parse(token);
+  unsigned char *bin_code = Gen(node);
+  // ElfFile ef = CreateElfFile(bin_code);
+  // SaveElfFile(ef, args->output_path);
 }

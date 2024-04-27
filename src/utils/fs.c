@@ -21,3 +21,10 @@ void ReadFile(char *path) {
     }
   }
 }
+
+void WriteFile(char *path, char *buf) {
+  FILE *fp = fopen(path, "w");
+  if(fp == NULL) Error("error: opening %s file", path);
+  fwrite(buf, sizeof(buf), 1, fp);
+  fclose(fp);
+}

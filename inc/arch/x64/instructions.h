@@ -1,38 +1,40 @@
-#ifndef _INSTRUCTIONS_H
-#define _INSTRUCTIONS_H
+#ifndef _X64_INSTRUCTIONS_H
+#define _X64_INSTRUCTIONS_H
 
-#define INSTR_MOV "mov"
-#define INSTR_ADD "add"
-#define INSTR_SUB "sub"
-#define INSTR_MUL "mul"
-#define INSTR_DIV "div"
-#define INSTR_INC "inc"
-#define INSTR_DEC "dec"
-#define INSTR_NEG "neg"
-#define INSTR_CMP "cmp"
-#define INSTR_JMP "jmp"
-#define INSTR_AND "and"
-#define INSTR_OR "or"
-#define INSTR_XOR "xor"
-#define INSTR_NOT "not"
-#define INSTR_CALL "call"
-#define INSTR_RET "ret"
+#include <gen/instruction.h>
 
-unsigned char X64InstrMov();
-unsigned char X64InstrAdd();
-unsigned char X64InstrSub();
-unsigned char X64InstrMul();
-unsigned char X64InstrDiv();
-unsigned char X64InstrInc();
-unsigned char X64InstrDec();
-unsigned char X64InstrNeg();
-unsigned char X64InstrCmp();
-unsigned char X64InstrJmp();
-unsigned char X64InstrAnd();
-unsigned char X64InstrOr();
-unsigned char X64InstrXor();
-unsigned char X64InstrNot();
-unsigned char X64InstrCall();
-unsigned char X64InstrRet();
+#define X64_INSTR_MOV "mov"
+#define X64_INSTR_ADD "add"
+#define X64_INSTR_SUB "sub"
+#define X64_INSTR_MUL "mul"
+#define X64_INSTR_DIV "div"
+#define X64_INSTR_INC "inc"
+#define X64_INSTR_DEC "dec"
+#define X64_INSTR_NEG "neg"
+#define X64_INSTR_CMP "cmp"
+#define X64_INSTR_JMP "jmp"
+#define X64_INSTR_AND "and"
+#define X64_INSTR_OR "or"
+#define X64_INSTR_XOR "xor"
+#define X64_INSTR_NOT "not"
+#define X64_INSTR_CALL "call"
+#define X64_INSTR_RET "ret"
+
+BinInstruction *X64InstrMov();
+BinInstruction *X64InstrAdd();
+BinInstruction *X64InstrSub();
+BinInstruction *X64InstrMul();
+BinInstruction *X64InstrDiv();
+BinInstruction *X64InstrInc();
+BinInstruction *X64InstrDec();
+BinInstruction *X64InstrNeg();
+BinInstruction *X64InstrCmp();
+BinInstruction *X64InstrJmp();
+BinInstruction *X64InstrAnd();
+BinInstruction *X64InstrOr();
+BinInstruction *X64InstrXor();
+BinInstruction *X64InstrNot();
+BinInstruction *X64InstrCall();
+BinInstruction *X64InstrRet();
 
 #endif

@@ -3,6 +3,16 @@
 
 #include <elf.h>
 
-Elf64_Ehdr CreateElfHeader();
+typedef struct _ElfFile {
+  unsigned char *ehdr;
+  unsigned char *phdr;
+  char *code;
+} ElfFile;
+
+unsigned char *CreateElfHeader(unsigned char *code);
+unsigned char *CreateProgramHeader(unsigned char *code);
+
+ElfFile CreateElfFile(unsigned char *code);
+void SaveElfFile(ElfFile ef, char *path);
 
 #endif

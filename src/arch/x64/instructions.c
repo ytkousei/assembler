@@ -1,36 +1,39 @@
 #include <arch/x64/instructions.h>
+#include <stdlib.h>
 
-unsigned char X64InstrMov() { }
+BinInstruction *X64InstrMov() { }
 
-unsigned char X64InstrAdd() { }
+BinInstruction *X64InstrAdd() { }
 
-unsigned char X64InstrSub() { }
+BinInstruction *X64InstrSub() { }
 
-unsigned char X64InstrMul() { }
+BinInstruction *X64InstrMul() { }
 
-unsigned char X64InstrDiv() { }
+BinInstruction *X64InstrDiv() { }
 
-unsigned char X64InstrInc() { }
+BinInstruction *X64InstrInc() { }
 
-unsigned char X64InstrDec() { }
+BinInstruction *X64InstrDec() { }
 
-unsigned char X64InstrNeg() { }
+BinInstruction *X64InstrNeg() { }
 
-unsigned char X64InstrCmp() { }
+BinInstruction *X64InstrCmp() { }
 
-unsigned char X64InstrJmp() { }
+BinInstruction *X64InstrJmp() { }
 
-unsigned char X64InstrAnd() { }
+BinInstruction *X64InstrAnd() { }
 
-unsigned char X64InstrOr() { }
+BinInstruction *X64InstrOr() { }
 
-unsigned char X64InstrXor() { }
+BinInstruction *X64InstrXor() { }
 
-unsigned char X64InstrNot() { }
+BinInstruction *X64InstrNot() { }
 
-unsigned char X64InstrCall() { }
+BinInstruction *X64InstrCall() { }
 
-unsigned char X64InstrRet() {
-  return 0xc3;
+BinInstruction *X64InstrRet() {
+  unsigned char *code;
+  BinInstruction *bin = CreateBinInstruction(&code, 1);
+  code[0] = 0xc3;
+  return bin;
 }
-

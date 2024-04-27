@@ -7,12 +7,14 @@ set(
   src/utils/print.c
   src/utils/args.c
   src/utils/fs.c
-  # src/elf_file.c
   src/tokenizer/token.c
   src/tokenizer/tokenizer.c
   src/parser/node.c
   src/parser/parser.c
   src/parser/instruction.c
+  src/gen/gen.c
+  src/gen/instruction.c
+  src/elf_file.c
   src/arch/archs.c
   src/arch/x64/instructions.c
   src/arch/x64/registers.c

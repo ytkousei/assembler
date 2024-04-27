@@ -8,8 +8,6 @@
 char is_next = 1;
 
 Param *CreateParam(Param *cur, ParamKind kind, int val) {
-  if(!is_next) Error("Error: expected a ','\n");
-  is_next = 0;
   Param *param = malloc(sizeof(Param));
   param->kind = kind;
   param->val = val;
